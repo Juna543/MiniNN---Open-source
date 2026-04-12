@@ -1,0 +1,65 @@
+{
+  "_comment": "MiniNN TrainingData v1.1.0 — edit 'entries', weights are auto-managed",
+  "arch": [6, 8, 8],
+  "entries": [
+
+    // ── REINFORCEMENT entries ──────────────────────────────────────────────
+    // reaction: +1 = reinforce current output pattern
+    //           -1 = invert (punish) current output pattern
+    // input: float array, length must match nn.iSize
+
+    {
+      "label": "greeting positive",
+      "input": [1, 0, 0, 0, 0, 0.1],
+      "reaction": 1
+    },
+    {
+      "label": "greeting negative example",
+      "input": [1, 0, 0, 0, 0, 0.1],
+      "reaction": -1
+    },
+    {
+      "label": "sad user",
+      "input": [0, 1, 0, 0, 0, 0.4],
+      "reaction": 1
+    },
+    {
+      "label": "happy user",
+      "input": [0, 0, 1, 0, 0, 0.3],
+      "reaction": 1
+    },
+    {
+      "label": "question asked",
+      "input": [0, 0, 0, 1, 0, 0.6],
+      "reaction": 1
+    },
+    {
+      "label": "thank you",
+      "input": [0, 0, 0, 0, 1, 0.2],
+      "reaction": 1
+    },
+
+    // ── SUPERVISED entries ────────────────────────────────────────────────
+    // target: explicit float array, length must match nn.oSize
+    // values between 0.0–1.0 (0.05 = soft-false, 0.95 = soft-true)
+
+    {
+      "label": "map input to specific output pattern",
+      "input": [0, 0, 1, 1, 0, 0.5],
+      "target": [0.95, 0.05, 0.95, 0.05, 0.95, 0.05, 0.95, 0.05]
+    },
+    {
+      "label": "all-on output",
+      "input": [1, 1, 1, 0, 0, 1.0],
+      "target": [0.95, 0.95, 0.95, 0.95, 0.95, 0.95, 0.95, 0.95]
+    },
+    {
+      "label": "all-off output",
+      "input": [0, 0, 0, 0, 0, 0.0],
+      "target": [0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
+    }
+
+  ],
+
+  "weights": null
+}
